@@ -37,7 +37,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
     line-height: 1;
-    max-width: 1190px;
+    max-width: 1024px;
     margin: 0 auto;
 }
 
@@ -74,7 +74,7 @@ table {
 
 .title {
     width: 100%;
-    height: 40px;
+    height: 30px;
     background-image: url('./images/bg-title.png');
     border-bottom: 3px solid #0E1B33;
 }
@@ -88,7 +88,7 @@ table {
     height: 100%;
     font-size: 18px;
     text-align: center;
-    line-height: 40px;
+    line-height: 30px;
 }
 .content{
     padding-top: 5px;
@@ -103,7 +103,7 @@ table {
     font-weight: bold;
 }
 .content table th, .content table td{
-    padding: 3px 0;
+    padding: 2px 0;
     text-align: center;
     color: #fff;
     font-family: 'Roboto Mono', monospace;
@@ -124,7 +124,7 @@ table {
 
 .game-summery {
     min-height: 100px;
-    width: 260px;
+    width: 310px;
     background-color: #000;
 }
 
@@ -134,7 +134,7 @@ table {
 
 .game-result .open, .game-result .hide, .game-result .result{
     width: 40px;
-    height: 20px;
+    height: 17px;
     margin: 0 auto;
     background-image: url('./images/statistic/show-bg.png');
     display: flex;
@@ -142,7 +142,7 @@ table {
     justify-content: space-between;
     align-items: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 40px 17px;
     padding: 0 4px;
 }
 .game-result .hide{
@@ -201,9 +201,14 @@ table {
 .game-statistic .tatistic-bg {
     background-color: var(--box-bg-color);
     border-radius: 5px;
-    padding: 6px 4px;
+    padding: 0;
+    padding: 2px 4px;
     margin: 0 3px;
-    font-size: 13px;
+    font-size: 11px;
+}
+.game-statistic tbody .tatistic-bg {
+    text-align: left;
+    padding: 4px 2px 4px 23px;
 }
 .game-statistic .dot{
     position: relative;
@@ -211,8 +216,8 @@ table {
 
 .game-statistic .dot::before{
     position: absolute;
-    left: 10px;
-    top: 8px;
+    left: 9px;
+    top: 4px;
     content: "";
     width: 12px;
     height: 12px;
@@ -227,7 +232,58 @@ table {
     background-color: var(--color-red);
 }
 
+.game-chinaboard {
+    background-color: black;
+    min-height: 100px;
+    width: 100%;
+}
+.game-chinaboard .content{
+    display: flex;
+    flex-direction: row;
+}
+.china-column{
+    flex: 1;
+    /* background-color: blue; */
+}
+.china-column .col-title{
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.china-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+.china-item .china-dot{
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
+.china-item.odd .china-dot{
+    background-image: url('./images/statistic/dot-odd-text.png');
+}
+.china-item.even .china-dot{
+    background-image: url('./images/statistic/dot-even-text.png');
+}
+
+.china-column:nth-child(2n) .china-item:nth-child(2n){
+    background-color: var(--chinaboard-bg-blur);
+}
+.china-column:nth-child(2n) .china-item:nth-child(2n+1){
+    background-color: var(--chinaboard-bg-dard);
+}
+.china-column:nth-child(2n+1) .china-item:nth-child(2n){
+    background-color: var(--chinaboard-bg-dark);
+}
+.china-column:nth-child(2n+1) .china-item:nth-child(2n+1){
+    background-color: var(--chinaboard-bg-blur);
+}
 
 .red{
     color: var(--color-red)
@@ -237,13 +293,21 @@ table {
 }
 
 #ifr-game{
-    height: 500px;
+    height: 410px;
 }
 
 /* @media (max-width: 428px) { */
 @media (max-width: 528px) {
+    .game-statistic .tatistic-bg {
+        padding: 6px 4px;
+        font-size: 12px;
+    }
+    .game-statistic tbody .tatistic-bg {
+        text-align: left;
+        padding: 6px 2px 6px 23px;
+    }
     #ifr-game{
-        height: 300px;
+        height: 220px;
     }
     .top-box {
         flex-direction: column;
@@ -254,8 +318,23 @@ table {
         display: flex;
         flex-direction: row;
     }
+    .content table th, .content table td{
+        padding: 1px 0;
+    }
+    #tbl-statistic th, #tbl-statistic td{
+        padding: 0;
+    }
     .game-statistic,.game-result{
         flex: 1;
+    }
+    .game-statistic .dot::before{
+        /* width: 10px; */
+        /* height: 10px; */
+        left: 8px;
+        top: 6px;
+    }
+    .game-statistic tbody .tatistic-bg {
+        /* padding-left: 20px; */
     }
 
     .china-item {
@@ -265,11 +344,11 @@ table {
         padding: 1px;
     }
     .china-item .china-dot{
-        width: 10px;
-        height: 10px;
+        width: 11px;
+        height: 11px;
     }
     .china-column .col-title{
-        font-size: 9px;
+        font-size: 10px;
     }
 }
 
